@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lbolab"
+version = "1.0.0"
+description = "Leveraged buyout modelling, value-creation attribution, private equity return analytics and a public-to-private screen."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Elmar Farajov" }]
+keywords = ["private equity", "leveraged buyout", "LBO", "IRR", "value creation", "credit", "valuation"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Intended Audience :: Financial and Insurance Industry",
+]
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.13",
+    "pandas>=2.2.2",
+    "matplotlib>=3.9",
+    "pyyaml>=6.0",
+    "yfinance>=0.2.54",
+]
+
+[project.optional-dependencies]
+app = ["streamlit>=1.36", "plotly>=5.20"]
+dev = ["pytest>=8.0", "pytest-cov>=5.0", "ruff==0.16.8"]
+
+[project.scripts]
+lbolab = "lbolab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+markers = ["slow: longer-running statistical or end-to-end tests"]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py310"
+src = ["src", "tests", "app"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "NPY"]
+
+[tool.coverage.run]
+source = ["lbolab"]
+omit = ["*/__main__.py"]

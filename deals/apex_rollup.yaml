@@ -1,0 +1,68 @@
+name: Apex Services roll-up
+currency: USD m
+notes: >
+  Buy-and-build in fragmented business services, financed at 6.5x including a PIK note and
+  recapitalised in year three once leverage falls below four turns. The structure shows what
+  happens to covenant headroom when returns are manufactured with debt rather than margin.
+
+operating:
+  entry_revenue: 260.0
+  ebitda_margin: [0.220, 0.226, 0.232, 0.238, 0.242, 0.245]
+  revenue_growth: [0.120, 0.110, 0.095, 0.080, 0.070]
+  gross_margin: 0.55
+  days_sales_outstanding: 48.0
+  days_inventory: 15.0
+  days_payable: 38.0
+  capex_pct_revenue: 0.025
+  depreciation_pct_revenue: 0.022
+  tax_rate: 0.25
+  opening_ppe: 60.0
+
+financing:
+  base_rate: [0.042, 0.040, 0.037, 0.035, 0.035]
+  transaction_fee_pct: 0.025
+  financing_fee_pct: 0.025
+  exit_fee_pct: 0.010
+  minimum_cash: 10.0
+  cash_sweep_pct: 1.0
+  tranches:
+    - name: Revolver
+      turns: 0.0
+      commitment_turns: 0.5
+      spread: 0.0375
+      is_revolver: true
+      sweep_priority: 1
+      term_years: 6
+    - name: Unitranche
+      turns: 5.00
+      spread: 0.0550
+      amortisation_pct: 0.01
+      sweep_priority: 2
+      term_years: 7
+    - name: PIK note
+      turns: 1.50
+      spread: 0.1150
+      floating: false
+      pik: true
+      term_years: 8
+
+exit:
+  hold_years: 5
+  entry_multiple: 11.0
+  exit_multiple: 10.5
+  dividend_recaps:
+    - year: 3
+      incremental_turns: 1.0
+      tranche: Unitranche
+
+covenants:
+  max_total_leverage: [7.0, 6.5, 6.0, 5.5, 5.0]
+  min_interest_coverage: 1.75
+
+waterfall:
+  rollover_equity: 10.0
+  management_pool_pct: 0.12
+  preferred_return: 0.08
+  carry: 0.20
+  catch_up: true
+  management_fee_pct: 0.015

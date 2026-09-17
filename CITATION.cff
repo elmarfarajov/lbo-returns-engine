@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "LBO Returns Engine: leveraged buyout modelling, value-creation attribution and private equity return analytics"
+authors:
+  - family-names: Farajov
+    given-names: Elmar
+version: 1.0.0
+date-released: 2026-09-18
+license: MIT
+repository-code: "https://github.com/elmarfarajov/lbo-returns-engine"
+keywords:
+  - private equity
+  - leveraged buyout
+  - value creation
+  - IRR attribution
+  - credit analysis
+  - public market equivalent
